@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        text-align: center;
+        margin-top: 40px;
+        color: #1f2937;
+      }
+      h1 {
+        color: #2563eb;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <h1 id="judul">Halo, Dunia!</h1>
+    <p>Buka console untuk melihat pesan tambahan dari JavaScript.</p>
+
+    <script>
+
+let nama = "Muhammad Shahveldino";
+let umur = 19;
+let sudahLulus = false;
+
+console.log(nama + "," + umur + "," + sudahLulus);
+console.log(typeof nama, typeof umur, typeof sudahLulus);
+console.log(typeof undefined, typeof null);
+console.log(Array.isArray([1, 2, 3]));
+// Mengubah isi elemen <h1> yang sudah ada di HTML
+      document.getElementById("judul").textContent = "Halo, " + nama + " " + umur + " " + sudahLulus + "!";
+    </script>
+  </body>
+</html>
