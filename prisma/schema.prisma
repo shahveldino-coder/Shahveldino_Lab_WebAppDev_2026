@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Buku {
+  id              String       @id // Kode Buku, contoh: "BK-001"
+  judul           String
+  pengarang       String
+  penerbit        String
+  kotaTerbit      String       @default("Jakarta")
+  tahun           Int
+  edisi           String       @default("Edisi Reguler")
+  isbn            String       @unique
+  kategori        String       // Buku Pelajaran, Fiksi & Sastra, Referensi & UTBK, Sejarah & Sosial
+  kelas           String       // Kelas X SMA, Kelas XI SMA, Kelas XII SMA, Umum SMA
+  lokasiRak       String       // Contoh: "Rak Sains B-01 (Baris 2)"
+  gedung          String       @default("Gedung Perpustakaan SMA Lt. 2")
+  halaman         Int          @default(300)
+  bahasa          String       @default("Bahasa Indonesia")
+  stok            Int          @default(0) // Jika 0, stok habis dan berwarna merah di UI
+  totalEksemplar  Int          @default(1)
+  deskripsi       String
+  babMateri       String?      // JSON list bab materi
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  peminjaman      Peminjaman[]
+}
+
+model Peminjaman {
+  id            String   @id @default(cuid())
+  bukuId        String
+  buku          Buku     @relation(fields: [bukuId], references: [id], onDelete: Cascade)
+  namaSiswa     String
+  nisn          String
+  kelas         String
+  tanggalPinjam DateTime @default(now())
+  batasKembali  DateTime
+  status        String   @default("DIPINJAM") // DIPINJAM, DIKEMBALIKAN
+  createdAt     DateTime @default(now())
+}

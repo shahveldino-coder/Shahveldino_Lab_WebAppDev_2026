@@ -1,0 +1,21 @@
+/* Custom styling for Form Tambah Buku */
+
+.form-tambah-container {
+  min-height: 100vh;
+}
+
+.input-focus-effect {
+  transition: all 0.2s ease-in-out;
+}
+
+.input-focus-effect:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.preview-card {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  color: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
